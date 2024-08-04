@@ -50,7 +50,7 @@ void setBoardDefaultConfiguration() {
 	engineConfiguration->injectionPins[10] = Gpio::A8;
 	engineConfiguration->injectionPins[11] = Gpio::A9;
 	//AUX FEATURE
-	engineConfiguration->fanPinMode = OM_OPENDRAIN;
+	engineConfiguration->fanPinMode = OM_DEFAULT;
 	engineConfiguration->fanPin = Gpio::D14;
 	engineConfiguration->launchActivationMode = CLUTCH_INPUT_LAUNCH;
 	//SD
