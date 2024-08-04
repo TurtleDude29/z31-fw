@@ -11,7 +11,9 @@
     engineConfiguration->ignitionMode = IM_WASTED_SPARK;
     // default 0.0
     engineConfiguration->fixedTiming = 10;
-    // default 1.65
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
+    // default 3.0
     engineConfiguration->displacement = 1.838997;
     // default 0.0
     engineConfiguration->globalTriggerAngleOffset = 76;
@@ -19,7 +21,7 @@
     engineConfiguration->vvtMode[0] = VVT_MIATA_NB;
     // default 450.0
     engineConfiguration->vvtOffsets[0] = 76;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 265;
     // default "None"
     engineConfiguration->injectorCompensationMode = ICM_FixedRailPressure;

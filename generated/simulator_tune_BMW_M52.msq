@@ -31,7 +31,7 @@
         <constant digits="0" name="multisparkMaxSparkingAngle" units="deg">30.0</constant>
         <constant digits="0" name="multisparkMaxExtraSparkCount" units="count">2.0</constant>
         <constant digits="0" name="vvtControlMinRpm" units="RPM">500.0</constant>
-        <constant digits="2" name="injector_flow" units="cm3/min">200.0</constant>
+        <constant digits="2" name="injector_flow" units="cm3/min">260.0</constant>
         <constant cols="1" digits="2" name="injector_battLagCorrBins" rows="8">
          6.0
          8.0
@@ -180,7 +180,7 @@
         <constant digits="3" name="displacement" units="L">3.0</constant>
         <constant digits="0" name="triggerSimulatorRpm" units="RPM">1200.0</constant>
         <constant digits="0" name="cylindersCount" units="">6.0</constant>
-        <constant name="firingOrder">"1-3-4-2"</constant>
+        <constant name="firingOrder">"1-2-3-4-5-6"</constant>
         <constant digits="0" name="justATempTest" units="">0.0</constant>
         <constant name="communityCommsLedPid">"NONE"</constant>
         <constant digits="2" name="cylinderBore" units="mm">87.5</constant>

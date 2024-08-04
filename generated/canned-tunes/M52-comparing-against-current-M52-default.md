@@ -29,7 +29,7 @@
     engineConfiguration->verboseVVTDecoding = true;
     // default "false"
     engineConfiguration->verboseTriggerSynchDetails = true;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 350;
     // default 300.0
     engineConfiguration->fuelReferencePressure = 100;

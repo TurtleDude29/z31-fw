@@ -15,7 +15,9 @@
     engineConfiguration->ignitionMode = IM_WASTED_SPARK;
     // default 0.0
     engineConfiguration->fixedTiming = 10;
-    // default 1.65
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
+    // default 3.0
     engineConfiguration->displacement = 2.2;
     // default 0.0
     engineConfiguration->globalTriggerAngleOffset = 72;
@@ -23,7 +25,7 @@
     engineConfiguration->camDecoder2jzPrecision = 25;
     // default 450.0
     engineConfiguration->vvtOffsets[0] = 0;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 222;
     // default 300.0
     engineConfiguration->fuelReferencePressure = 0;

@@ -5,7 +5,9 @@
 ```
     // default "Single Coil"
     engineConfiguration->ignitionMode = IM_INDIVIDUAL_COILS;
-    // default 1.65
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
+    // default 3.0
     engineConfiguration->displacement = 1.998;
     // default 0.0
     engineConfiguration->globalTriggerAngleOffset = 475;
@@ -13,7 +15,7 @@
     engineConfiguration->vvtOffsets[0] = -155;
     // default 0.0
     engineConfiguration->vvtOffsets[1] = 337;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 440;
     // default "None"
     engineConfiguration->injectorCompensationMode = ICM_FixedRailPressure;

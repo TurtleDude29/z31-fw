@@ -5,10 +5,6 @@
 ```
     // default "Single Coil"
     engineConfiguration->ignitionMode = IM_WASTED_SPARK;
-    // default 4.0
-    engineConfiguration->cylindersCount = 6;
-    // default 1.65
-    engineConfiguration->displacement = 3;
     // default 0.0
     engineConfiguration->trigger.customTotalToothCount = 3;
     // default 0.0
@@ -35,7 +31,7 @@
     engineConfiguration->verboseVVTDecoding = true;
     // default "false"
     engineConfiguration->verboseTriggerSynchDetails = true;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 350;
     // default 300.0
     engineConfiguration->fuelReferencePressure = 100;

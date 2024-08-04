@@ -3,6 +3,8 @@
 // canned tune https://rusefi.com/online/view.php?msq=1508
 
 ```
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
     // default "true"
     engineConfiguration->isForcedInduction = false;
     // default -154.0

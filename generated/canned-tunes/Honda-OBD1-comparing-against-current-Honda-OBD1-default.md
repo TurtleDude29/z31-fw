@@ -3,6 +3,8 @@
 // canned tune https://rusefi.com/online/view.php?msq=1621
 
 ```
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
     // default 1.645
     engineConfiguration->displacement = 1.493;
     // default "12crank/24cam"

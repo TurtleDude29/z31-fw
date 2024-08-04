@@ -15,7 +15,7 @@
     engineConfiguration->camDecoder2jzPrecision = 25;
     // default -203.0
     engineConfiguration->vvtOffsets[2] = -207;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 320;
     // default 300.0
     engineConfiguration->fuelReferencePressure = 0;

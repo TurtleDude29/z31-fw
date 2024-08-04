@@ -3,7 +3,9 @@
 // canned tune https://rusefi.com/online/view.php?msq=1621
 
 ```
-    // default 1.65
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
+    // default 3.0
     engineConfiguration->displacement = 1.493;
     // default "60-2"
     engineConfiguration->trigger.type = TT_TOOTHED_WHEEL;
@@ -15,7 +17,7 @@
     engineConfiguration->globalTriggerAngleOffset = 80;
     // default 450.0
     engineConfiguration->vvtOffsets[0] = 0;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 240;
     // default "None"
     engineConfiguration->injectorCompensationMode = ICM_FixedRailPressure;

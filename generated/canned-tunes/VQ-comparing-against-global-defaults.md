@@ -9,9 +9,7 @@
     engineConfiguration->twoWireBatchIgnition = true;
     // default "None"
     engineConfiguration->ignOverrideMode = AFR_Tps;
-    // default 4.0
-    engineConfiguration->cylindersCount = 6;
-    // default 1.65
+    // default 3.0
     engineConfiguration->displacement = 3.5;
     // default "60-2"
     engineConfiguration->trigger.type = TT_NISSAN_VQ35;
@@ -23,7 +21,7 @@
     engineConfiguration->vvtOffsets[0] = 157;
     // default 0.0
     engineConfiguration->vvtOffsets[2] = -207;
-    // default 200.0
+    // default 260.0
     engineConfiguration->injector.flow = 320;
     // default 300.0
     engineConfiguration->fuelReferencePressure = 0;

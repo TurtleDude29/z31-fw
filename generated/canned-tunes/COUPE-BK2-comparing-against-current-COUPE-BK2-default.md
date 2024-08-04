@@ -3,6 +3,8 @@
 // canned tune https://rusefi.com/online/view.php?msq=1507
 
 ```
+    // default 6.0
+    engineConfiguration->cylindersCount = 4;
     // default 0.0
     engineConfiguration->cylinderBankSelect[0] = 1;
     // default 0.0
