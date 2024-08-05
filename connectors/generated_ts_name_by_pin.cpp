@@ -24,6 +24,8 @@ const char * getBoardSpecificPinName(brain_pin_e brainPin) {
 		case Gpio::E0: return "Fuel Pump";
 		case Gpio::E1: return "Injector 4 (Stock)";
 		case Gpio::E11: return "Clutch";
+		case Gpio::E12: return "Hall1";
+		case Gpio::E13: return "Hall2";
 		case Gpio::E14: return "Extra I/O PE14";
 		case Gpio::E15: return "Idle (PE15)";
 		case Gpio::E2: return "Injector 5 (Stock)";
