@@ -54,6 +54,8 @@ void setBoardDefaultConfiguration() {
 	engineConfiguration->fanPinMode = OM_DEFAULT;
 	engineConfiguration->fanPin = Gpio::D14;
 	engineConfiguration->launchActivationMode = CLUTCH_INPUT_LAUNCH;
+	engineConfiguration->camInputs[0] = Gpio::E12; // HALL1
+    	engineConfiguration->camInputs[1] = Gpio::E13; // HALL2
 	//SD
 	engineConfiguration->spi3mosiPin = Gpio::C12;
 	engineConfiguration->spi3misoPin = Gpio::C11;
