@@ -16,6 +16,7 @@ Gpio getWarningLedPin() {
 
 void setBoardDefaultConfiguration() {
 	//MAIN
+   setTPS1Inputs(EFI_ADC_12, EFI_ADC_13);
         engineConfiguration->mainRelayPin = Gpio::B8;
         engineConfiguration->fuelPumpPin = Gpio::E0;
 	engineConfiguration->malfunctionIndicatorPin = Gpio::B9;
@@ -60,6 +61,9 @@ void setBoardDefaultConfiguration() {
 	engineConfiguration->spi3mosiPin = Gpio::C12;
 	engineConfiguration->spi3misoPin = Gpio::C11;
 	engineConfiguration->spi3sckPin = Gpio::C10;
+	//CAN
+	engineConfiguration->canTxPin = Gpio::D1;
+     	engineConfiguration->canRxPin = Gpio::D0;
 	//VBATT
 	engineConfiguration->vbattDividerCoeff = 10.2f;
 	engineConfiguration->vbattAdcChannel = EFI_ADC_7;
