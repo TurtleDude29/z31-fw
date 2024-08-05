@@ -74,7 +74,15 @@ pins:
   - id: A9
     class: outputs
     ts_name: Injector 6 (Aux)
+
+  - id: [E12, E12]
+    class: [switch_inputs, event_inputs]
+    ts_name: Hall1
     
+  - id: [E13, E13]
+    class: [switch_inputs, event_inputs]
+    ts_name: Hall2
+
   - id: E0
     class: outputs
     ts_name: Fuel Pump
