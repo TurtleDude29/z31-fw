@@ -24,11 +24,11 @@ Gpio GENERATED_OUTPUTS = {
 	Gpio::A8, // Injector 5 (Aux)
 	Gpio::A9, // Injector 6 (Aux)
 	Gpio::E0, // Fuel Pump
+	Gpio::D11, // ETB_DIS/StepDir
+	Gpio::D10, // ETB_DIR/StepStep
 	Gpio::E5, // NOS (PE5)
 	Gpio::B8, // Tach (PB8)
 	Gpio::B9, // Boost (PB9)
-	Gpio::D11, // ETB_DIS/StepDir
-	Gpio::D10, // ETB_DIR/StepStep
 	Gpio::C5, // PPS2 (PC5)
 	Gpio::D12, // ETB PWM
 	Gpio::D15, // Fan1
@@ -56,11 +56,11 @@ Gpio GENERATED_OUTPUTS = {
 // "Injector 5 (Aux)",
 // "Injector 6 (Aux)",
 // "Fuel Pump",
+// "ETB_DIS/StepDir",
+// "ETB_DIR/StepStep",
 // "NOS (PE5)",
 // "Tach (PB8)",
 // "Boost (PB9)",
-// "ETB_DIS/StepDir",
-// "ETB_DIR/StepStep",
 // "PPS2 (PC5)",
 // "ETB PWM",
 // "Fan1",
