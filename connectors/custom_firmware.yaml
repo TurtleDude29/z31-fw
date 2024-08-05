@@ -75,21 +75,25 @@ pins:
     class: outputs
     ts_name: Injector 6 (Aux)
 
-  - id: [E12, E12]
-    class: [switch_inputs, event_inputs]
-    ts_name: Hall1
-    
-  - id: [E13, E13]
-    class: [switch_inputs, event_inputs]
-    ts_name: Hall2
-
   - id: E0
     class: outputs
     ts_name: Fuel Pump
+
+  - id: [E12, E12]
+    class: [switch_inputs, event_inputs]
+    ts_name: Hall 1
     
-  - id: EFI_ADC_1
-    class: analog_inputs
-    ts_name: MAP (A1)
+  - id: [E13, E13]
+    class: [switch_inputs, event_inputs]
+    ts_name: Hall 2
+    
+  - id: [E7, E7]
+    class: [switch_inputs, event_inputs]
+    ts_name: CKP
+    
+  - id: [E8, E8]
+    class: [switch_inputs, event_inputs]
+    ts_name: CMP
 
   - id: EFI_ADC_2
     class: analog_inputs
@@ -98,7 +102,23 @@ pins:
   - id: EFI_ADC_7
     class: analog_inputs
     ts_name: BattV
-  
+    
+  - id: EFI_ADC_15
+    class: analog_inputs
+    ts_name: TPS STOCK
+
+  - id: EFI_ADC_1
+    class: analog_inputs
+    ts_name: MAP (A1)
+    
+  - id: [D11, D11]
+    class: [outputs, event_inputs]
+    ts_name: ETB_DIS/StepDir
+
+  - id: [D10, D10]
+    class: [outputs, event_inputs]
+    ts_name: ETB_DIR/StepStep
+
   - id: EFI_ADC_8
     class: analog_inputs
     ts_name: O2-2 (B0)
@@ -115,10 +135,6 @@ pins:
     class: analog_inputs
     ts_name: PPS1 (C4)
 
-  - id: EFI_ADC_15
-    class: analog_inputs
-    ts_name: TPS STOCK
-
   - id: E5
     class: outputs
     ts_name: NOS (PE5)
@@ -130,14 +146,6 @@ pins:
   - id: B9
     class: outputs
     ts_name: Boost (PB9)
-
-  - id: [D11, D11]
-    class: [outputs, event_inputs]
-    ts_name: ETB_DIS/StepDir
-
-  - id: [D10, D10]
-    class: [outputs, event_inputs]
-    ts_name: ETB_DIR/StepStep
 
   - id: C5
     class: outputs
@@ -162,14 +170,6 @@ pins:
   - id: [C6, C6]
     class: [switch_inputs, event_inputs]
     ts_name: FlexFuel
-
-  - id: [E7, E7]
-    class: [switch_inputs, event_inputs]
-    ts_name: CKP
-    
-  - id: [E8, E8]
-    class: [switch_inputs, event_inputs]
-    ts_name: CMP
 
   - id: [A6, A6, A6]
     class: [outputs, switch_inputs, event_inputs]
