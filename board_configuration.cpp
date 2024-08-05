@@ -45,6 +45,12 @@ void setBoardDefaultConfiguration() {
 	engineConfiguration->injectionPins[10] = Gpio::A8;
 	engineConfiguration->injectionPins[11] = Gpio::A9;
 	//AUX FEATURE
+    	// PWM pin
+     	engineConfiguration->etbIo[0].controlPin = Gpio::D12;
+    	// DIR pin
+    	engineConfiguration->etbIo[0].directionPin1 = Gpio::D10;
+    	// Disable pin
+     	engineConfiguration->etbIo[0].disablePin = Gpio::D11;
 	engineConfiguration->fanPinMode = OM_DEFAULT;
 	engineConfiguration->fanPin = Gpio::D14;
 	engineConfiguration->launchActivationMode = CLUTCH_INPUT_LAUNCH;
