@@ -78,15 +78,6 @@ pins:
   - id: E0
     class: outputs
     ts_name: Fuel Pump
-  
-  - id: EFI_ADC_0
-    class: analog_inputs
-# getAdcChannelBrainPin in 'stm32_adc.cpp' says EFI_ADC_0 is PA0
-    ts_name: TPS (A0)
-
-  - id: EFI_ADC_5
-    class: analog_inputs
-    ts_name: TPS (A5)
     
   - id: EFI_ADC_1
     class: analog_inputs
@@ -118,7 +109,7 @@ pins:
 
   - id: EFI_ADC_15
     class: analog_inputs
-    ts_name: PPS2 (C5)
+    ts_name: TPS STOCK
 
   - id: E5
     class: outputs
