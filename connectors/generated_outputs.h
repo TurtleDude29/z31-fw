@@ -4,70 +4,68 @@
 #pragma once
 
 Gpio GENERATED_OUTPUTS = {
-	Gpio::A8, // Ignition 1
-	Gpio::C9, // Ignition 2
-	Gpio::A10, // Ignition 3
-	Gpio::C8, // Ignition 4
-	Gpio::E0, // Injector 1
-	Gpio::E6, // Injector 2
-	Gpio::D9, // Injector 3
-	Gpio::E3, // Injector 4
-	Gpio::E4, // Fuel Pump (PE4)
+	Gpio::D4, // Ignition 1 (StockCoil)
+	Gpio::G3, // Ignition 1 (Aux)
+	Gpio::G4, // Ignition 2 (Aux)
+	Gpio::G5, // Ignition 3 (Aux)
+	Gpio::G6, // Ignition 4 (Aux)
+	Gpio::G7, // Ignition 5 (Aux)
+	Gpio::G8, // Ignition 6 (Aux)
+	Gpio::G12, // Injector 1 (Stock)
+	Gpio::G13, // Injector 2 (Stock)
+	Gpio::G11, // Injector 3 (Stock)
+	Gpio::E1, // Injector 4 (Stock)
+	Gpio::E2, // Injector 5 (Stock)
+	Gpio::G14, // Injector 6 (Stock)
+	Gpio::G9, // Injector 1 (Aux)
+	Gpio::G10, // Injector 2 (Aux)
+	Gpio::D3, // Injector 3 (Aux)
+	Gpio::D7, // Injector 4 (Aux)
+	Gpio::A8, // Injector 5 (Aux)
+	Gpio::A9, // Injector 6 (Aux)
+	Gpio::E0, // Fuel Pump
+	Gpio::D11, // ETB_DIS/StepDir
+	Gpio::D10, // ETB_DIR/StepStep
 	Gpio::E5, // NOS (PE5)
 	Gpio::B8, // Tach (PB8)
 	Gpio::B9, // Boost (PB9)
-	Gpio::B14, // ETB_DIS/StepDir
-	Gpio::B15, // ETB_DIR/StepStep
 	Gpio::C5, // PPS2 (PC5)
-	Gpio::C6, // ETB PWM
-	Gpio::C10, // VVT1 (C10)
-	Gpio::C11, // VVT2 (C11)
-	Gpio::C13, // Fan (PC13)
-	Gpio::D4, // CAM2 (PD4)
-	Gpio::D5, // USART-TX (PD5)
-	Gpio::D6, // USART-RX (PD6)
-	Gpio::D2, // Ignition 7 (PD2)
-	Gpio::D3, // Ignition 8 (PD3)
-	Gpio::D10, // Injector 5 (PD10)
-	Gpio::D11, // Injector 6 (PD11)
-	Gpio::D12, // Injector 7 (PD12)
-	Gpio::D13, // Injector 8 (PD13)
-	Gpio::D14, // Threshold (PD14)
-	Gpio::E11, // Ignition 5 (PE11)
-	Gpio::E12, // Ignition 6 (PE12)
+	Gpio::D12, // ETB PWM
+	Gpio::D15, // Fan1
+	Gpio::D14, // Fan2
+	Gpio::A6, // xxxx
 	Gpio::E14, // Extra I/O PE14
 	Gpio::E15, // Idle (PE15)
-// "Ignition 1",
-// "Ignition 2",
-// "Ignition 3",
-// "Ignition 4",
-// "Injector 1",
-// "Injector 2",
-// "Injector 3",
-// "Injector 4",
-// "Fuel Pump (PE4)",
+// "Ignition 1 (StockCoil)",
+// "Ignition 1 (Aux)",
+// "Ignition 2 (Aux)",
+// "Ignition 3 (Aux)",
+// "Ignition 4 (Aux)",
+// "Ignition 5 (Aux)",
+// "Ignition 6 (Aux)",
+// "Injector 1 (Stock)",
+// "Injector 2 (Stock)",
+// "Injector 3 (Stock)",
+// "Injector 4 (Stock)",
+// "Injector 5 (Stock)",
+// "Injector 6 (Stock)",
+// "Injector 1 (Aux)",
+// "Injector 2 (Aux)",
+// "Injector 3 (Aux)",
+// "Injector 4 (Aux)",
+// "Injector 5 (Aux)",
+// "Injector 6 (Aux)",
+// "Fuel Pump",
+// "ETB_DIS/StepDir",
+// "ETB_DIR/StepStep",
 // "NOS (PE5)",
 // "Tach (PB8)",
 // "Boost (PB9)",
-// "ETB_DIS/StepDir",
-// "ETB_DIR/StepStep",
 // "PPS2 (PC5)",
 // "ETB PWM",
-// "VVT1 (C10)",
-// "VVT2 (C11)",
-// "Fan (PC13)",
-// "CAM2 (PD4)",
-// "USART-TX (PD5)",
-// "USART-RX (PD6)",
-// "Ignition 7 (PD2)",
-// "Ignition 8 (PD3)",
-// "Injector 5 (PD10)",
-// "Injector 6 (PD11)",
-// "Injector 7 (PD12)",
-// "Injector 8 (PD13)",
-// "Threshold (PD14)",
-// "Ignition 5 (PE11)",
-// "Ignition 6 (PE12)",
+// "Fan1",
+// "Fan2",
+// "xxxx",
 // "Extra I/O PE14",
 // "Idle (PE15)",
 }
