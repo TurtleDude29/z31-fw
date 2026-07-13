@@ -1,77 +1,110 @@
+/**
+ * Nissan Z31 300ZX (VG30E/ET) plug-n-play unit
+ * mega-uaefi module + mcu100-f7, see docs/schematic-notes.md for the pin mapping extraction
+ */
+
 #include "pch.h"
+#include "defaults.h"
+#include "mega-uaefi.h"
+#include "hellen_meta.h"
 #include "board_overrides.h"
+#include "hellen_mm100_meta.h"
 
-Gpio getCommsLedPin() {
-	return Gpio::D15;
+#include "hellen_leds_100.cpp"
+
+static void customBoardConfigOverrides() {
+	// F7 module stack, same as super-uaefi: not setMegaUaefiBoardConfigOverrides which
+	// carries F4-specific SPI1/CAN2 pin workarounds
+	setHellenMegaEnPin();
+	setHellenVbatt();
+
+	hellenMegaSdWithAccelerometer();
+
+	engineConfiguration->vrThreshold[0].pin = Gpio::MM100_OUT_PWM6;
+
+	setHellenCan();
+
+	setDefaultHellenAtPullUps();
 }
 
-Gpio getRunningLedPin() {
-	return Gpio::Unassigned;
-}
-
-Gpio getWarningLedPin() {
-	return Gpio::Unassigned;
-}
-
+// board-specific configuration setup
 static void customBoardDefaultConfiguration() {
-	engineConfiguration->vbattDividerCoeff = 6.5f;
-	engineConfiguration->vbattAdcChannel = EFI_ADC_11;
+	setUaefiBoardDefaultConfiguration();
+
+	// OEM pins 104/105 are cross-wired to module channels INJ5/INJ4, see schematic-notes.md
+	engineConfiguration->injectionPins[0] = Gpio::MM100_INJ1; // 101 cylinder 1
+	engineConfiguration->injectionPins[1] = Gpio::MM100_INJ2; // 102 cylinder 2
+	engineConfiguration->injectionPins[2] = Gpio::MM100_INJ3; // 103 cylinder 3
+	engineConfiguration->injectionPins[2] = Gpio::MM100_INJ4; // 104 cylinder 4	
+	engineConfiguration->injectionPins[4] = Gpio::MM100_INJ5; // 105 cylinder 5
+	engineConfiguration->injectionPins[5] = Gpio::MM100_INJ6; // 106 cylinder 6
+
+	// single channel into the OEM external power transistor, distributor engine
+	engineConfiguration->ignitionPins[0] = Gpio::MM100_IGN1; // 5 OUT_IGN
+
+	engineConfiguration->mainRelayPin = Gpio::MM100_IGN7; // 6 LS5_HOT Main Relay
+	engineConfiguration->fuelPumpPin = Gpio::MM100_OUT_PWM2; // 20 LS4 Fuel Pump Relay
+	engineConfiguration->idle.solenoidPin = Gpio::MM100_INJ8; // 2 LS2 Idle Air Valve
+
+	// optical CAS in distributor: crank on OEM pin 17, cam on OEM pin 8
+	engineConfiguration->triggerInputPins[0] = Gpio::MM100_IN_D2;
+	engineConfiguration->camInputs[0] = Gpio::MM100_IN_D1;
+
+	engineConfiguration->vehicleSpeedSensorInputPin = Gpio::MM100_IN_D3; // 29 IN_VSS
+	engineConfiguration->clutchDownPin = Gpio::MM100_IN_CRANK; // 10 IN_CLUTCH
+
+	engineConfiguration->tps1_1AdcChannel = MM100_IN_TPS_ANALOG; // J1-32
+	engineConfiguration->mafAdcChannel = MM100_IN_O2S2_ANALOG; // 31 IN_MAF hot-wire
+	engineConfiguration->map.sensor.hwChannel = MM100_IN_MAP1_ANALOG; // J1-31
+	engineConfiguration->clt.adcChannel = MM100_IN_CLT_ANALOG; // 23
+	engineConfiguration->iat.adcChannel = MM100_IN_IAT_ANALOG; // J1-24
+
+	// 21 IN_KNOCK: disabled for now, knock ch1 PA2 conflicts with injector 4 on this build
+	engineConfiguration->enableSoftwareKnock = false;
+
+	engineConfiguration->displayLogicLevelsInEngineSniffer = true;
+	engineConfiguration->isSdCardEnabled = true;
+
+	hellenWbo();
 }
 
 static Gpio OUTPUTS[] = {
-    Gpio::D11, // 
-    Gpio::D12, // 
-    Gpio::D13, //
-    Gpio::D14, //
-    Gpio::E11, //
-    Gpio::E12,
+	Gpio::MM100_INJ1, // 101 INJ_1
+	Gpio::MM100_INJ2, // 102 INJ_2
+	Gpio::MM100_INJ3, // 103 INJ_3
+	Gpio::MM100_INJ5, // 104 INJ_4
+	Gpio::MM100_INJ4, // 105 INJ_5
+	Gpio::MM100_INJ6, // 106 INJ_6
+	Gpio::MM100_INJ8, // 2 LS2 Idle Air Valve
+	Gpio::MM100_OUT_PWM2, // 20 LS4 Fuel Pump Relay
+	Gpio::MM100_IGN7, // 6 LS5_HOT Main Relay
+	Gpio::MM100_INJ7, // J1-8 LS1
+	Gpio::MM100_OUT_PWM1, // J1-7 LS3
+	Gpio::MM100_IGN1, // 5 OUT_IGN power transistor, logic level
+	Gpio::MM100_IGN3, // J1-9 IGN_AUX_3
+	Gpio::MM100_IGN4, // J1-17 IGN_AUX_4
+	Gpio::MM100_IGN5, // J1-25 IGN_AUX_5
 };
 
 int getBoardMetaOutputsCount() {
     return efi::size(OUTPUTS);
 }
 
+int getBoardMetaLowSideOutputsCount() {
+    // the last 4 outputs are logic-level ignition channels
+    return getBoardMetaOutputsCount() - 4;
+}
+
 Gpio* getBoardMetaOutputs() {
     return OUTPUTS;
 }
 
-void setCustomVbatt() {
-	// set vbatt_divider 5.835
-	// 33k / 6.8k
-	engineConfiguration->vbattDividerCoeff = 10.2; // 5.835
-
-	engineConfiguration->vbattAdcChannel = EFI_ADC_11;
-
+static void customBoardInitHardware() {
+	setupHellenSharedInputs();
 }
-/*
-static void setInjectorPins() {
-	engineConfiguration->injectionPins[0] = Gpio::E0;
-	engineConfiguration->injectionPins[1] = Gpio::E6;
-	engineConfiguration->injectionPins[2] = Gpio::D9;
-	engineConfiguration->injectionPins[3] = Gpio::E3;
-}
-
-static void setIgnitionPins() {
-	engineConfiguration->ignitionPins[0] = Gpio::A8;
-	engineConfiguration->ignitionPins[1] = Gpio::C9;
-	engineConfiguration->ignitionPins[2] = Gpio::A10;
-	engineConfiguration->ignitionPins[3] = Gpio::C8;
-}
-
-void setBoardDefaultConfiguration() {
-	engineConfiguration->map.sensor.hwChannel = EFI_ADC_0;
-	engineConfiguration->clt.adcChannel = EFI_ADC_1;
-	engineConfiguration->iat.adcChannel = EFI_ADC_13;
-	engineConfiguration->afr.hwChannel = EFI_ADC_14;
-
-	engineConfiguration->vbattAdcChannel = EFI_ADC_12;
-	engineConfiguration->analogInputDividerCoefficient = 10.2f;
-	
-	engineConfiguration->triggerInputPins[0] = Gpio::B1;
-	engineConfiguration->triggerInputPins[1] = Gpio::A6;
-}
-*/
 
 void setup_custom_board_overrides() {
+	custom_board_InitHardware = customBoardInitHardware;
 	custom_board_DefaultConfiguration = customBoardDefaultConfiguration;
+	custom_board_ConfigOverrides = customBoardConfigOverrides;
 }
