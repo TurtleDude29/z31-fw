@@ -1,44 +1,29 @@
+include $(BOARD_DIR)/firmware/firmware.mk
 
-# List of all the board related files.
-BOARDCPPSRC = $(BOARD_DIR)/board_configuration.cpp
+ifneq ($(PROJECT_CPU),simulator)
+BOARDCPPSRC += $(BOARD_DIR)/ext/rusefi/firmware/config/boards/hellen/uaefi121/mega-uaefi.cpp
+endif
 
+BOARDINC += $(BOARD_DIR)/generated/controllers/generated \
+    $(BOARD_DIR)/ext/rusefi/firmware/config/boards/hellen/uaefi121/
 
 # defines SHORT_BOARD_NAME
 include $(BOARD_DIR)/meta-info.env
 
-# one day when we are grown ups and can coordinate a real life test we shall revisit https://github.com/rusefi/rusefi/issues/6008
-DDEFS += -DDISABLE_PIN_STATE_VALIDATION=TRUE
+ifneq ($(PROJECT_CPU),simulator)
+include $(BOARD_DIR)/ext/rusefi/firmware/config/boards/hellen/uaefi121/mega-uaefi.mk
+endif
 
-# reduce memory usage monitoring
-DDEFS += -DRAM_UNUSED_SIZE=100
-
-# assign critical LED to a non-existent pin
-DDEFS += -DLED_CRITICAL_ERROR_BRAIN_PIN=Gpio::I15
-
-# MAJOR HACK? SOMETHING IS FUNNY HERE?!
-DDEFS += -DDISABLE_PIN_STATE_VALIDATION=TRUE
-
-# temporary or not? (pps noise stuff)
-DDEFS += -DETB_INTERMITTENT_LIMIT=60001
-
-DDEFS += -DSTM32_ADC_USE_ADC3=TRUE
-# todo: make knock pin software-selectable?
-# todo: DDEFS += -DEFI_SOFTWARE_KNOCK=TRUE
-
-DDEFS += -DEFI_SOFTWARE_KNOCK=TRUE -DSTM32_ADC_USE_ADC3=TRUE
-
-# OpenBLT CAN1 on PD0/PD1 (STM32F407/F427 alternate CAN1 pinout)
-DDEFS += -DBOOT_COM_CAN_CHANNEL_INDEX=0
-DDEFS += -DOPENBLT_CAN_RX_PORT=GPIOD
-DDEFS += -DOPENBLT_CAN_RX_PIN=0
-DDEFS += -DOPENBLT_CAN_TX_PORT=GPIOD
-DDEFS += -DOPENBLT_CAN_TX_PIN=1
-
-DDEFS += -DEFI_HPFP=FALSE
-DDEFS += -DEFI_MAIN_RELAY_CONTROL=FALSE
+# this would save some flash while being unable to update WBO controller firmware
 DDEFS += -DEFI_WIDEBAND_FIRMWARE_UPDATE=FALSE
-DDEFS += -DEFI_EMBED_INI_MSD=FALSE
-DDEFS += -DEFI_LOGIC_ANALYZER=FALSE
-DDEFS += -DEFI_ENGINE_SNIFFER=FALSE
-DDEFS += -DEFI_ENGINE_EMULATOR=FALSE
-DDEFS += -DEFI_TOOTH_LOGGER=FALSE
+
+# assign critical LED to a non-existent pin if you do not have it on your board
+# good old PD14 is still the default value
+# DDEFS += -DLED_CRITICAL_ERROR_BRAIN_PIN=Gpio::I15
+
+# EGT chip
+#un-comment to enable
+#DDEFS += -DEFI_MAX_31855=TRUE
+
+#see main repo for details on this any many other optional subsystems. We have too many, one has to choose what fits into his choice of stm32
+#DDEFS += -DEFI_ONBOARD_MEMS=TRUE
